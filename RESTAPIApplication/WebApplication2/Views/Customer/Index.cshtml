@@ -1,0 +1,74 @@
+﻿@model WebApplication2.Models.CustomerTrainings
+
+@{
+    Layout = null;
+}
+
+
+
+<div>
+    <h1>Index</h1>
+</div>
+@using (Html.BeginForm("Index", "Customer", FormMethod.Post, new { id = "CustomerForm" }))
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="col-md-6">
+                    <div class="control-label col-md-3">
+                        <span>Training Name:</span>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m=>m.TrainingName, new {@class ="form-control" ,@id="TxtTraining",@tabindex = 1})
+                    </div>
+                </div>
+                <div></div>
+                <div class="col-md-6">
+                    <div class="control-label col-md-3">
+                        <span>Start Date:</span>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.StartDate,"{0:dd/MM/yy}", new { @class = "form-control datepicker", @id = "TxtStartDate", @tabindex = 2 })
+                    </div>
+                </div>
+                <div></div>
+                <div class="col-md-6">
+                    <div class="control-label col-md-3">
+                        <span>End Date:</span>
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.EndDate, "{0:dd/MM/yy}", new { @class = "form-control datepicker", @id = "TxtEndDate", @tabindex = 3 })
+                    </div>
+                </div>
+                <div></div>
+                <div class="col-md-6">
+                    <div class="control-label col-md-3">
+                        <span>No of Days:</span> 
+                    </div>
+                    <div>
+                        @Html.TextBoxFor(m => m.DateTimeDifference, new { @class = "form-control", @id = "TxtTimeDifference", @tabindex = 4 })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-12 col-xs-12 button-row">
+            <input type="submit" name="submit" id="Save" value="Save" class="btn width-20 btn-info pull-left" style="margin:0px 5px 5px 15px" />
+        </div>
+    </div>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js">
+        $("#Save").click(function(e)
+        {
+        if (($("#TxtStartDate").val() == 0) || ($("#TxtStartDate").val() == ''))
+            {
+            alert("Start Date can not be empty.");
+            return false;
+        }
+
+        if (($("#TxtEndDate").val() == 0) || ($("#TxtEndDate").val() == '')) {
+            alert("End Date can not be empty.");
+            return false;
+        }
+
+    });
+    </script>
+}
