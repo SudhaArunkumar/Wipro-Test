@@ -1,0 +1,35 @@
+﻿@model WebApplication1.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+	<h2>Sample Test Method</h2>
+
+	@if (!string.IsNullOrEmpty(Model.OutputText))
+	{
+		<div class="alert alert-success" style="text-align:center">
+			@Html.LabelFor(m => m.OutputText, Model.OutputText, new { @style = "font-size:15px" })
+		</div>
+	}
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <div class="row">
+		<div class="col-lg-3">
+			@Html.LabelFor(m => m.Text, "Enter Text", new { @class = "control-label pull-right" })
+		</div>
+		<div class="col-lg-6">
+			@Html.TextBoxFor(m=>m.Text, new {@class="form-control" })
+		</div>
+    </div>
+	<div class="row" style="margin-top:20px" >
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6">
+			<input type="submit" name="Submit" value="submit" class="btn btn-default" />
+		</div>
+	</div>	
+}
+</div>
